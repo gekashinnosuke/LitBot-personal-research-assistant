@@ -44,7 +44,7 @@ CHAT_MODEL = "gpt-5.1"
 # ===============================
 # ユーティリティ
 # ===============================
-def split_text(text, chunk_size=500):
+def split_text(text, chunk_size=200):
     words = text.split()
     return [" ".join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
 
@@ -98,11 +98,14 @@ if uploaded_files and "embeddings" not in st.session_state:
             chunks = split_text(text)
 
             for chunk in chunks:
-                all_chunks.append({
-                    "filename": pdf.name,
-                    "text": chunk
-                })
-                all_embeddings.append(get_embedding(chunk))
+             if len(chunk.strip()) < 20:
+              continue
+             all_chunks.append({
+                 "filename": pdf.name,
+                 "text": chunk
+            })
+             all_embeddings.append(get_embedding(chunk))
+
 
         st.session_state["chunks"] = all_chunks
         st.session_state["embeddings"] = all_embeddings
