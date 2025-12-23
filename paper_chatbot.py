@@ -65,11 +65,10 @@ def cosine_similarity(a, b):
 # Streamlit UI
 # ===============================
 st.set_page_config(page_title="論文チャットボット", layout="wide")
-st.title("📚 論文チャットボット")
+st.title("📚 LitBot-論文のお供、整理と要約をサポート")
 
 st.markdown("""
-PDF論文を登録して、ChatGPTのように質問してください。  
-裏では **Embedding検索** が動いています。
+PDFを登録して、質問してください。  
 """)
 
 # ===============================
