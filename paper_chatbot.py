@@ -8,28 +8,6 @@ import numpy as np
 import os
 import streamlit as st
 
-APP_PASSWORD = os.environ["litbot1222"]
-
-if "authenticated" not in st.session_state:
-    st.session_state["authenticated"] = False
-
-if not st.session_state["authenticated"]:
-    st.title("🔒 LitBot ログイン")
-
-    password = st.text_input(
-        "パスワードを入力してください",
-        type="password"
-    )
-
-    if st.button("ログイン"):
-        if password == APP_PASSWORD:
-            st.session_state["authenticated"] = True
-            st.experimental_rerun()
-        else:
-            st.error("パスワードが違います")
-
-    st.stop()  # ← ここ超重要
-
 from PyPDF2 import PdfReader
 
 # ===============================
